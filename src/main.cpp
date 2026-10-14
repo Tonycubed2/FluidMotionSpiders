@@ -23,9 +23,16 @@ namespace
 
 	void ApplyMovement()
 	{
+		// Only rebuild the patched movement types when the setting actually changed.
+		static int  applied = -1;
 		const auto& c = Config::Get().spider;
+		const int   want = Host::Connected() && c.enabled && c.omni ? 1 : 0;
+		if (want == applied) {
+			return;
+		}
+		applied = want;
 		SpiderLegs::ApplyMovement(false);
-		SpiderLegs::ApplyMovement(Host::Connected() && c.enabled && c.omni);
+		SpiderLegs::ApplyMovement(want == 1);
 	}
 
 	void OnMessage(SKSE::MessagingInterface::Message* a_msg)
