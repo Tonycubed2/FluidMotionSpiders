@@ -1,0 +1,53 @@
+name: build
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: xmake-io/github-action-setup-xmake@v1
+        with:
+          xmake-version: latest
+      - name: Build
+        id: build
+        shell: pwsh
+        continue-on-error: true
+        run: |
+          New-Item -ItemType Directory -Force ci | Out-Null
+          xmake f -p windows -m releasedbg -y -v *>&1 | Tee-Object -FilePath ci/configure.log
+          if ($LASTEXITCODE -ne 0) { "CONFIGURE FAILED" | Out-File ci/status.txt; exit 1 }
+          xmake -y -v *>&1 | Tee-Object -FilePath ci/build.log
+          if ($LASTEXITCODE -ne 0) { "BUILD FAILED" | Out-File ci/status.txt; exit 1 }
+          "OK" | Out-File ci/status.txt
+          New-Item -ItemType Directory -Force ci/SKSE/Plugins | Out-Null
+          Get-ChildItem build -Recurse -Include FluidMotionSpiders.dll,FluidMotionSpiders.pdb | Copy-Item -Destination ci/SKSE/Plugins
+          Copy-Item dist/SKSE/Plugins/* ci/SKSE/Plugins
+          Copy-Item LICENSE, NOTICE.md, THIRD_PARTY_NOTICES.md, CommonLibSSE-NG-EXCEPTIONS.md -Destination ci
+      - name: Publish to ci-out branch
+        if: always()
+        shell: pwsh
+        run: |
+          $sha = git rev-parse --short HEAD
+          Copy-Item -Recurse ci $env:RUNNER_TEMP/ci
+          git config user.name "ci"
+          git config user.email "ci@users.noreply.github.com"
+          git checkout --orphan ci-out
+          git rm -rf --quiet . 2>$null
+          git submodule deinit -f --all 2>$null
+          Remove-Item -Recurse -Force lib, build, .xmake -ErrorAction SilentlyContinue
+          Copy-Item -Recurse $env:RUNNER_TEMP/ci/* .
+          "$sha" | Out-File source-commit.txt
+          git add -A -f status.txt source-commit.txt *.log SKSE 2>$null
+          git add -A -f .
+          git commit -q -m "CI output for $sha"
+          git push -f origin ci-out
+      - name: Fail if build failed
+        if: steps.build.outcome == 'failure'
+        run: exit 1
