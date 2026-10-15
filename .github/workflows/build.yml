@@ -29,6 +29,7 @@ jobs:
           New-Item -ItemType Directory -Force ci/SKSE/Plugins | Out-Null
           Get-ChildItem build -Recurse -Include FluidMotionSpiders.dll,FluidMotionSpiders.pdb | Copy-Item -Destination ci/SKSE/Plugins
           Copy-Item dist/SKSE/Plugins/* ci/SKSE/Plugins
+          if (-not (Test-Path ci/SKSE/Plugins/FluidMotionSpiders.ini)) { "INI MISSING" | Out-File ci/status.txt; exit 1 }
           Copy-Item LICENSE, NOTICE.md, THIRD_PARTY_NOTICES.md, CommonLibSSE-NG-EXCEPTIONS.md -Destination ci
       - name: Publish to ci-out branch
         if: always()
