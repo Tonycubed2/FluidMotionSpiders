@@ -1,0 +1,834 @@
+[0mchecking for platform ... [32;1mwindows (x64)[0m
+[0m[33;1mDetecting Visual Studio environment (cached); run `xmake global --clean` first if vs updated.[0m
+[0mchecking for vswhere.exe ... [32;1mC:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe[0m
+[0mchecking for cl.exe ... [32;1mC:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\bin\HostX64\x64\cl.exe[0m
+[0mchecking for Microsoft C/C++ Compiler (x64) ... [32;1mok[0m
+[0mchecking for Microsoft Visual Studio (x64) version ... [32;1m2026[0m
+[0mchecking for zig ... [31;1mno[0m
+[0mchecking for nim ... [31;1mno[0m
+[0mchecking for dotnet ... [32;1mC:\Program Files\dotnet\dotnet.exe[0m
+[0mchecking for .NET SDK version ... [32;1m10.0.401[0m
+[0mchecking for .NET SDK directory ... [32;1mC:\Program Files\dotnet\sdk\10.0.401[0m
+[0mchecking for git ... [32;1mC:\Program Files\Git\bin\git.exe[0m
+[0mchecking for gzip ... [32;1mC:\Program Files\Git\usr\bin\gzip.exe[0m
+[0mchecking for tar ... [32;1mC:\Windows\System32\tar.exe[0m
+[0mchecking for curl ... [32;1mC:\hostedtoolcache\windows\xmake\3.1.1\x64\winenv\bin\curl[0m
+pinging the host(gitlab.com) ... 66 ms
+pinging the host(github.com) ... 110 ms
+pinging the host(gitee.com) ... 844 ms
+pinging the host(gitcode.com) ... 931 ms
+updating repositories .. 
+cloning repository(build-artifacts): https://gitlab.com/xmake-mirror/build-artifacts.git to C:\Users\runneradmin\AppData\Local\.xmake\repositories\build-artifacts ..
+Cloning into 'C:\Users\runneradmin\AppData\Local\.xmake\repositories\build-artifacts'...
+Updating files:  23% (562/2435)
+Updating files:  24% (585/2435)
+Updating files:  25% (609/2435)
+Updating files:  26% (634/2435)
+Updating files:  27% (658/2435)
+Updating files:  28% (682/2435)
+Updating files:  28% (684/2435)
+Updating files:  28% (704/2435)
+Updating files:  29% (707/2435)
+Updating files:  30% (731/2435)
+Updating files:  31% (755/2435)
+Updating files:  32% (780/2435)
+Updating files:  33% (804/2435)
+Updating files:  34% (828/2435)
+Updating files:  35% (853/2435)
+Updating files:  36% (877/2435)
+Updating files:  37% (901/2435)
+Updating files:  38% (926/2435)
+Updating files:  39% (950/2435)
+Updating files:  40% (974/2435)
+Updating files:  41% (999/2435)
+Updating files:  42% (1023/2435)
+Updating files:  43% (1048/2435)
+Updating files:  44% (1072/2435)
+Updating files:  45% (1096/2435)
+Updating files:  46% (1121/2435)
+Updating files:  47% (1145/2435)
+Updating files:  48% (1169/2435)
+Updating files:  49% (1194/2435)
+Updating files:  49% (1214/2435)
+Updating files:  50% (1218/2435)
+Updating files:  51% (1242/2435)
+Updating files:  52% (1267/2435)
+Updating files:  53% (1291/2435)
+Updating files:  54% (1315/2435)
+Updating files:  55% (1340/2435)
+Updating files:  56% (1364/2435)
+Updating files:  57% (1388/2435)
+Updating files:  58% (1413/2435)
+Updating files:  59% (1437/2435)
+Updating files:  60% (1461/2435)
+Updating files:  61% (1486/2435)
+Updating files:  62% (1510/2435)
+Updating files:  63% (1535/2435)
+Updating files:  64% (1559/2435)
+Updating files:  65% (1583/2435)
+Updating files:  66% (1608/2435)
+Updating files:  67% (1632/2435)
+Updating files:  67% (1647/2435)
+Updating files:  68% (1656/2435)
+Updating files:  69% (1681/2435)
+Updating files:  70% (1705/2435)
+Updating files:  71% (1729/2435)
+Updating files:  72% (1754/2435)
+Updating files:  73% (1778/2435)
+Updating files:  74% (1802/2435)
+Updating files:  75% (1827/2435)
+Updating files:  76% (1851/2435)
+Updating files:  77% (1875/2435)
+Updating files:  78% (1900/2435)
+Updating files:  79% (1924/2435)
+Updating files:  80% (1948/2435)
+Updating files:  81% (1973/2435)
+Updating files:  82% (1997/2435)
+Updating files:  82% (2015/2435)
+Updating files:  83% (2022/2435)
+Updating files:  84% (2046/2435)
+Updating files:  85% (2070/2435)
+Updating files:  86% (2095/2435)
+Updating files:  87% (2119/2435)
+Updating files:  88% (2143/2435)
+Updating files:  89% (2168/2435)
+Updating files:  90% (2192/2435)
+Updating files:  90% (2210/2435)
+Updating files:  91% (2216/2435)
+Updating files:  92% (2241/2435)
+Updating files:  93% (2265/2435)
+Updating files:  94% (2289/2435)
+Updating files:  95% (2314/2435)
+Updating files:  96% (2338/2435)
+Updating files:  97% (2362/2435)
+Updating files:  98% (2387/2435)
+Updating files:  99% (2411/2435)
+Updating files: 100% (2435/2435)
+Updating files: 100% (2435/2435), done.
+cloning repository(xmake-repo): https://gitlab.com/tboox/xmake-repo.git to C:\Users\runneradmin\AppData\Local\.xmake\repositories\xmake-repo ..
+Cloning into 'C:\Users\runneradmin\AppData\Local\.xmake\repositories\xmake-repo'...
+Updating files:  19% (569/2920)
+Updating files:  20% (584/2920)
+Updating files:  21% (614/2920)
+Updating files:  22% (643/2920)
+Updating files:  23% (672/2920)
+Updating files:  24% (701/2920)
+Updating files:  25% (730/2920)
+Updating files:  26% (760/2920)
+Updating files:  27% (789/2920)
+Updating files:  28% (818/2920)
+Updating files:  29% (847/2920)
+Updating files:  30% (876/2920)
+Updating files:  31% (906/2920)
+Updating files:  32% (935/2920)
+Updating files:  33% (964/2920)
+Updating files:  34% (993/2920)
+Updating files:  35% (1022/2920)
+Updating files:  36% (1052/2920)
+Updating files:  37% (1081/2920)
+Updating files:  38% (1110/2920)
+Updating files:  39% (1139/2920)
+Updating files:  40% (1168/2920)
+Updating files:  41% (1198/2920)
+Updating files:  42% (1227/2920)
+Updating files:  43% (1256/2920)
+Updating files:  44% (1285/2920)
+Updating files:  45% (1314/2920)
+Updating files:  46% (1344/2920)
+Updating files:  47% (1373/2920)
+Updating files:  48% (1402/2920)
+Updating files:  49% (1431/2920)
+Updating files:  50% (1460/2920)
+Updating files:  51% (1490/2920)
+Updating files:  52% (1519/2920)
+Updating files:  53% (1548/2920)
+Updating files:  54% (1577/2920)
+Updating files:  55% (1606/2920)
+Updating files:  56% (1636/2920)
+Updating files:  57% (1665/2920)
+Updating files:  58% (1694/2920)
+Updating files:  59% (1723/2920)
+Updating files:  60% (1752/2920)
+Updating files:  61% (1782/2920)
+Updating files:  62% (1811/2920)
+Updating files:  63% (1840/2920)
+Updating files:  64% (1869/2920)
+Updating files:  64% (1871/2920)
+Updating files:  65% (1898/2920)
+Updating files:  66% (1928/2920)
+Updating files:  67% (1957/2920)
+Updating files:  68% (1986/2920)
+Updating files:  69% (2015/2920)
+Updating files:  70% (2044/2920)
+Updating files:  71% (2074/2920)
+Updating files:  72% (2103/2920)
+Updating files:  73% (2132/2920)
+Updating files:  74% (2161/2920)
+Updating files:  75% (2190/2920)
+Updating files:  76% (2220/2920)
+Updating files:  77% (2249/2920)
+Updating files:  78% (2278/2920)
+Updating files:  79% (2307/2920)
+Updating files:  80% (2336/2920)
+Updating files:  81% (2366/2920)
+Updating files:  82% (2395/2920)
+Updating files:  83% (2424/2920)
+Updating files:  84% (2453/2920)
+Updating files:  85% (2482/2920)
+Updating files:  86% (2512/2920)
+Updating files:  87% (2541/2920)
+Updating files:  88% (2570/2920)
+Updating files:  89% (2599/2920)
+Updating files:  90% (2628/2920)
+Updating files:  91% (2658/2920)
+Updating files:  91% (2659/2920)
+Updating files:  92% (2687/2920)
+Updating files:  93% (2716/2920)
+Updating files:  94% (2745/2920)
+Updating files:  95% (2774/2920)
+Updating files:  96% (2804/2920)
+Updating files:  97% (2833/2920)
+Updating files:  98% (2862/2920)
+Updating files:  99% (2891/2920)
+Updating files: 100% (2920/2920)
+Updating files: 100% (2920/2920), done.
+[0m[32mok[0m
+C:\Program Files\Git\bin\git.exe rev-parse HEAD
+[0mchecking for ninja ... [31;1mno[0m
+[0mchecking for ninja ... [31;1mno[0m
+[0mchecking for ninja ... [32;1mC:\ProgramData\Chocolatey\bin\ninja.exe[0m
+[0mchecking for cmake ... [31;1mno[0m
+[0mchecking for cmake ... [31;1mno[0m
+[0mchecking for cmake ... [32;1mC:\Program Files\CMake\bin\cmake[0m
+[0mchecking for xmake::directxmath ... [31;1mno[0m
+[0mchecking for vcpkg.exe ... [32;1mC:\vcpkg\vcpkg.exe[0m
+[0mchecking for cl.exe ... [32;1mC:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\bin\HostX64\x64\cl.exe[0m
+[0m[2mchecking for the c compiler (cc) ... [32;1mcl.exe[0m
+[0mchecking for link.exe ... [32;1mC:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\bin\HostX64\x64\link.exe[0m
+[0m[2mchecking for the linker (ld) ... [32;1mlink.exe[0m
+[0m[2m> checking for c links(directxmath)[0m
+[0m[2m> checking for c snippet(find_package/directxmath)[0m
+[0mchecking for directxmath ... [31;1mno[0m
+[0mchecking for xmake::directxtk ... [31;1mno[0m
+[0m[2m> checking for c links(directxtk)[0m
+[0m[2m> checking for c snippet(find_package/directxtk)[0m
+[0mchecking for directxtk ... [31;1mno[0m
+[0mchecking for xmake::spdlog ... [31;1mno[0m
+[0m[2m> checking for c links(spdlog)[0m
+[0m[2m> checking for c snippet(find_package/spdlog)[0m
+[0mchecking for spdlog ... [31;1mno[0m
+[0mchecking for xmake::simpleini ... [31;1mno[0m
+[0m[2m> checking for c links(simpleini)[0m
+[0m[2m> checking for c snippet(find_package/simpleini)[0m
+[0mchecking for simpleini ... [31;1mno[0m
+[0mchecking for xmake::xbyak ... [31;1mno[0m
+[0m[2m> checking for c links(xbyak)[0m
+[0m[2m> checking for c snippet(find_package/xbyak)[0m
+[0mchecking for xbyak ... [31;1mno[0m
+[0mchecking for xmake::rapidcsv ... [31;1mno[0m
+[0m[2m> checking for c links(rapidcsv)[0m
+[0m[2m> checking for c snippet(find_package/rapidcsv)[0m
+[0mchecking for rapidcsv ... [31;1mno[0m
+[0mchecking for aria2c ... [32;1mC:\ProgramData\Chocolatey\bin\aria2c.exe[0m
+C:\ProgramData\Chocolatey\bin\aria2c.exe --no-conf=true --console-log-level=notice "--user-agent=Xmake/3.1.1+HEAD.3ba37a0d4 (Windows;) aria2/1.37.0" --split=8 --max-connection-per-server=8 --min-split-size=1M --allow-overwrite=true --dir=. --out=directxmath-2024.02.zip https://github.com/microsoft/DirectXMath/archive/refs/tags/feb2024.zip
+
+10/15 04:55:35 [[1;32mNOTICE[0m] Downloading 1 item(s)
+
+10/15 04:55:35 [[1;32mNOTICE[0m] CUID#7 - Redirecting to https://codeload.github.com/microsoft/DirectXMath/zip/refs/tags/feb2024
+
+                                                                               
+[#8f3c08 204KiB/0B CN:1 DL:1.0MiB]
+10/15 04:55:36 [[1;32mNOTICE[0m] Download complete: ./directxmath-2024.02.zip
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+8f3c08|OK  |   248KiB/s|./directxmath-2024.02.zip
+
+Status Legend:
+(OK):download completed.
+[0mchecking for 7z ... [32;1mC:\hostedtoolcache\windows\xmake\3.1.1\x64\winenv\bin\7z[0m
+C:\hostedtoolcache\windows\xmake\3.1.1\x64\winenv\bin\7z x -y directxmath-2024.02.zip -snl- -osource.tmp
+
+7-Zip 24.08 (x64) : Copyright (c) 1999-2024 Igor Pavlov : 2024-08-11
+
+Scanning the drive for archives:
+1 file, 253579 bytes (248 KiB)
+
+Extracting archive: directxmath-2024.02.zip
+--
+Path = directxmath-2024.02.zip
+Type = zip
+Physical Size = 253579
+Comment = d837578297c6c93849573858182350ede04987dc
+
+Everything is Ok
+
+Folders: 9
+Files: 49
+Size:       1933593
+Compressed: 253579
+[0m[33m  => [0mdownload https://github.com/microsoft/DirectXMath/archive/refs/tags/feb2024.zip .. [32;1mok[0m
+[0mchecking for ninja ... [32;1mC:\ProgramData\Chocolatey\bin\ninja.exe[0m
+[0mchecking for cl.exe ... [32;1mC:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\bin\HostX64\x64\cl.exe[0m
+[0m[2mchecking for the c++ compiler (cxx) ... [32;1mcl.exe[0m
+[0mchecking for cmake ... [32;1mC:\Program Files\CMake\bin\cmake[0m
+[0mchecking for pkgconf ... [31;1mno[0m
+[0mchecking for pkg-config ... [31;1mno[0m
+[0mchecking for link.exe ... [32;1mC:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\bin\HostX64\x64\link.exe[0m
+[0m[2mchecking for the static library archiver (ar) ... [32;1mlink.exe[0m
+[0mchecking for link.exe ... [32;1mC:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\bin\HostX64\x64\link.exe[0m
+[0m[2mchecking for the shared library linker (sh) ... [32;1mlink.exe[0m
+[0mchecking for pkgconf ... [31;1mno[0m
+[0mchecking for pkg-config ... [31;1mno[0m
+C:\Program Files\CMake\bin\cmake -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=C:\Users\runneradmin\AppData\Local\.xmake\packages\d\directxmath\2024.02\b43cee1705a040bdb171c586b0ad9685 -DCMAKE_INSTALL_LIBDIR:PATH=lib -G Ninja -DCMAKE_MAKE_PROGRAM=C:\ProgramData\Chocolatey\bin\ninja.exe -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DCMAKE_LINKER_TYPE=MSVC -DCMAKE_COMPILE_PDB_OUTPUT_DIRECTORY=C:/Users/runneradmin/AppData/Local/.xmake/cache/packages/2610/d/directxmath/2024.02/source/build_22a0e7b2/pdb -DCMAKE_PDB_OUTPUT_DIRECTORY=C:/Users/runneradmin/AppData/Local/.xmake/cache/packages/2610/d/directxmath/2024.02/source/build_22a0e7b2/pdb -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreadedDLL -DCMAKE_POLICY_VERSION_MINIMUM=3.5 "-DCMAKE_CXX_FLAGS_RELEASE=/O2 /Ob2 /DNDEBUG -MD" "-DCMAKE_C_FLAGS=/DWIN32 /D_WINDOWS" "-DCMAKE_CXX_FLAGS=/DWIN32 /D_WINDOWS /GR /EHsc" -DCMAKE_EXE_LINKER_FLAGS_RELEASE=/INCREMENTAL:NO -DCMAKE_SHARED_LINKER_FLAGS_RELEASE=/INCREMENTAL:NO -DCMAKE_STATIC_LINKER_FLAGS_RELEASE= -DCMAKE_STATIC_LINKER_FLAGS=/machine:x64 "-DCMAKE_C_FLAGS_RELEASE=/O2 /Ob2 /DNDEBUG -MD" -DCMAKE_SHARED_LINKER_FLAGS=/machine:x64 C:\Users\runneradmin\AppData\Local\.xmake\cache\packages\2610\d\directxmath\2024.02\source
+-- The CXX compiler identification is MSVC 19.51.36260.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: C:/Program Files/Microsoft Visual Studio/18/Enterprise/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (0.8s)
+-- Generating done (0.1s)
+CMake Warning (unused-cli):
+  Manually-specified variables were not used by the project:
+
+    CMAKE_COMPILE_PDB_OUTPUT_DIRECTORY
+    CMAKE_C_FLAGS
+    CMAKE_C_FLAGS_RELEASE
+    CMAKE_PDB_OUTPUT_DIRECTORY
+
+-- Build files have been written to: C:/Users/runneradmin/AppData/Local/.xmake/cache/packages/2610/d/directxmath/2024.02/source/build_22a0e7b2
+[0mchecking for pkgconf ... [31;1mno[0m
+[0mchecking for pkg-config ... [31;1mno[0m
+C:\ProgramData\Chocolatey\bin\ninja.exe install -C C:\Users\runneradmin\AppData\Local\.xmake\cache\packages\2610\d\directxmath\2024.02\source\build_22a0e7b2 -j 6
+ninja: Entering directory `C:\Users\runneradmin\AppData\Local\.xmake\cache\packages\2610\d\directxmath\2024.02\source\build_22a0e7b2'
+[0/1] Install the project...
+-- Install configuration: "Release"
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/d/directxmath/2024.02/b43cee1705a040bdb171c586b0ad9685/share/directxmath/DirectXMath-targets.cmake
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/d/directxmath/2024.02/b43cee1705a040bdb171c586b0ad9685/include/directxmath/DirectXCollision.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/d/directxmath/2024.02/b43cee1705a040bdb171c586b0ad9685/include/directxmath/DirectXCollision.inl
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/d/directxmath/2024.02/b43cee1705a040bdb171c586b0ad9685/include/directxmath/DirectXColors.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/d/directxmath/2024.02/b43cee1705a040bdb171c586b0ad9685/include/directxmath/DirectXMath.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/d/directxmath/2024.02/b43cee1705a040bdb171c586b0ad9685/include/directxmath/DirectXMathConvert.inl
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/d/directxmath/2024.02/b43cee1705a040bdb171c586b0ad9685/include/directxmath/DirectXMathMatrix.inl
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/d/directxmath/2024.02/b43cee1705a040bdb171c586b0ad9685/include/directxmath/DirectXMathMisc.inl
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/d/directxmath/2024.02/b43cee1705a040bdb171c586b0ad9685/include/directxmath/DirectXMathVector.inl
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/d/directxmath/2024.02/b43cee1705a040bdb171c586b0ad9685/include/directxmath/DirectXPackedVector.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/d/directxmath/2024.02/b43cee1705a040bdb171c586b0ad9685/include/directxmath/DirectXPackedVector.inl
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/d/directxmath/2024.02/b43cee1705a040bdb171c586b0ad9685/share/directxmath/directxmath-config.cmake
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/d/directxmath/2024.02/b43cee1705a040bdb171c586b0ad9685/share/directxmath/directxmath-config-version.cmake
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/d/directxmath/2024.02/b43cee1705a040bdb171c586b0ad9685/lib/pkgconfig/DirectXMath.pc
+[0mchecking for xmake::directxmath ... [32;1mdirectxmath 2024.02[0m
+[0m[1m{[0m 
+  [0m[31;1mlicense[0m[0m[0m[0m [2m=[0m [0m[31m"[0m[31;1mMIT[0m[31m"[0m,
+  [0m[31;1mversion[0m[0m[0m[0m [2m=[0m [0m[31m"[0m[31;1m2024.02[0m[31m"[0m,
+  [0m[31;1msysincludedirs[0m[0m[0m[0m [2m=[0m [0m[1m{[0m 
+    [0m[31m"[0m[31;1mC:\Users\runneradmin\AppData\Local\.xmake\packages\d\directxmath\2024.02\b43cee1705a040bdb171c586b0ad9685\include\directxmath[0m[31m"[0m, 
+  [0m[1m}[0m, 
+[0m[1m}[0m
+
+[0mchecking for C:\Program Files\Microsoft Visual Studio\18\Enterprise\VC\Tools\MSVC\14.51.36231\bin\HostX64\x64\cl.exe ... [32;1mc:\program files\microsoft visual studio\18\enterprise\vc\tools\msvc\14.51.36231\bin\hostx64\x64\cl.exe[0m
+[0m[2mchecking for flags (-MD) ... [32;1mok[0m
+[0m[2mchecking for flags (cl_external_includedir) ... [32;1mok[0m
+[0m[2m> checking for c++ includes(DirectXMath.h)[0m
+[0m[2m> checking for c++ snippet(test)[0m
+[0m[33m  => [0minstall directxmath 2024.02 .. [32;1mok[0m
+C:\ProgramData\Chocolatey\bin\aria2c.exe --no-conf=true --console-log-level=notice "--user-agent=Xmake/3.1.1+HEAD.3ba37a0d4 (Windows;) aria2/1.37.0" --split=8 --max-connection-per-server=8 --min-split-size=1M --allow-overwrite=true --dir=. --out=directxtk-24.2.0.7z https://github.com/xmake-mirror/build-artifacts/releases/download/directxtk-24.2.0/windows-x64-vc14.38.33130-f6fb9eaf439246fdb823f48a8816ec0c.7z
+
+10/15 04:55:47 [[1;32mNOTICE[0m] Downloading 1 item(s)
+
+10/15 04:55:47 [[1;32mNOTICE[0m] CUID#7 - Redirecting to https://release-assets.githubusercontent.com/github-production-release-asset/378028880/2843ab5c-0e6d-4219-af52-4a59713313a8?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-10-15T05%3A55%3A21Z&rscd=attachment%3B+filename%3Dwindows-x64-vc14.38.33130-f6fb9eaf439246fdb823f48a8816ec0c.7z&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-10-15T04%3A55%3A21Z&ske=2026-10-15T05%3A55%3A21Z&sks=b&skv=2018-11-09&sig=WMYerspRzeNQ%2Bh%2FN7ZAH9XgjfRBXQURbHPkJBjK3aZ8%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc5MjA0MDQ0NywibmJmIjoxNzkyMDQwMTQ3LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.9SstjDCY5e1j7-Py8rMaCMoaF-ph4uaJoz3nycNZKjE&response-content-disposition=attachment%3B%20filename%3Dwindows-x64-vc14.38.33130-f6fb9eaf439246fdb823f48a8816ec0c.7z&response-content-type=application%2Foctet-stream
+
+10/15 04:55:48 [[1;32mNOTICE[0m] Download complete: ./directxtk-24.2.0.7z
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+c76e62|OK  |    37MiB/s|./directxtk-24.2.0.7z
+
+Status Legend:
+(OK):download completed.
+C:\hostedtoolcache\windows\xmake\3.1.1\x64\winenv\bin\7z x -y directxtk-24.2.0.7z -snl- -osource.tmp
+
+7-Zip 24.08 (x64) : Copyright (c) 1999-2024 Igor Pavlov : 2024-08-11
+
+Scanning the drive for archives:
+1 file, 1221651 bytes (1194 KiB)
+
+Extracting archive: directxtk-24.2.0.7z
+--
+Path = directxtk-24.2.0.7z
+Type = 7z
+Physical Size = 1221651
+Headers Size = 934
+Method = LZMA2:12m BCJ
+Solid = +
+Blocks = 2
+
+Everything is Ok
+
+Folders: 11
+Files: 51
+Size:       11536637
+Compressed: 1221651
+[0m[33m  => [0mdownload https://github.com/xmake-mirror/build-artifacts/releases/download/directxtk-24.2.0/windows-x64-vc14.38.33130-f6fb9eaf439246fdb823f48a8816ec0c.7z .. [32;1mok[0m
+[0mchecking for xmake::directxtk ... [32;1mdirectxtk 24.2.0[0m
+[0m[1m{[0m 
+  [0m[31;1mlibfiles[0m[0m[0m[0m [2m=[0m [0m[1m{[0m 
+    [0m[31m"[0m[31;1mC:\Users\runneradmin\AppData\Local\.xmake\packages\d\directxtk\24.2.0\f6fb9eaf439246fdb823f48a8816ec0c\lib\DirectXTK.lib[0m[31m"[0m, 
+  [0m[1m}[0m,
+  [0m[31;1mversion[0m[0m[0m[0m [2m=[0m [0m[31m"[0m[31;1m24.2.0[0m[31m"[0m,
+  [0m[31;1mstatic[0m[0m[0m[0m [2m=[0m [0m[34mtrue[0m[0m[0m,
+  [0m[31;1msysincludedirs[0m[0m[0m[0m [2m=[0m [0m[1m{[0m 
+    [0m[31m"[0m[31;1mC:\Users\runneradmin\AppData\Local\.xmake\packages\d\directxtk\24.2.0\f6fb9eaf439246fdb823f48a8816ec0c\include[0m[31m"[0m, 
+  [0m[1m}[0m,
+  [0m[31;1mlinkdirs[0m[0m[0m[0m [2m=[0m [0m[1m{[0m 
+    [0m[31m"[0m[31;1mC:\Users\runneradmin\AppData\Local\.xmake\packages\d\directxtk\24.2.0\f6fb9eaf439246fdb823f48a8816ec0c\lib[0m[31m"[0m, 
+  [0m[1m}[0m,
+  [0m[31;1mlinks[0m[0m[0m[0m [2m=[0m [0m[1m{[0m 
+    [0m[31m"[0m[31;1mDirectXTK[0m[31m"[0m, 
+  [0m[1m}[0m, 
+[0m[1m}[0m
+
+[0m[2m> checking for c++ includes(windows.h, SimpleMath.h)[0m
+[0m[2m> checking for c++ links(DirectXTK)[0m
+[0m[2m> checking for c++ snippet(test)[0m
+[0m[33m  => [0minstall directxtk 24.2.0 [2m(precompiled)[0m .. [32;1mok[0m
+C:\ProgramData\Chocolatey\bin\aria2c.exe --no-conf=true --console-log-level=notice "--user-agent=Xmake/3.1.1+HEAD.3ba37a0d4 (Windows;) aria2/1.37.0" --split=8 --max-connection-per-server=8 --min-split-size=1M --allow-overwrite=true --dir=. --out=spdlog-v1.16.0.zip https://github.com/gabime/spdlog/archive/refs/tags/v1.16.0.zip
+
+10/15 04:55:52 [[1;32mNOTICE[0m] Downloading 1 item(s)
+
+10/15 04:55:53 [[1;32mNOTICE[0m] CUID#7 - Redirecting to https://codeload.github.com/gabime/spdlog/zip/refs/tags/v1.16.0
+
+10/15 04:55:53 [[1;32mNOTICE[0m] Download complete: ./spdlog-v1.16.0.zip
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+9367c4|OK  |   406KiB/s|./spdlog-v1.16.0.zip
+
+Status Legend:
+(OK):download completed.
+C:\hostedtoolcache\windows\xmake\3.1.1\x64\winenv\bin\7z x -y spdlog-v1.16.0.zip -snl- -osource.tmp
+
+7-Zip 24.08 (x64) : Copyright (c) 1999-2024 Igor Pavlov : 2024-08-11
+
+Scanning the drive for archives:
+1 file, 362720 bytes (355 KiB)
+
+Extracting archive: spdlog-v1.16.0.zip
+--
+Path = spdlog-v1.16.0.zip
+Type = zip
+Physical Size = 362720
+Comment = 486b55554f11c9cccc913e11a87085b2a91f706f
+
+Everything is Ok
+
+Folders: 17
+Files: 176
+Size:       1206783
+Compressed: 362720
+[0m[33m  => [0mdownload https://github.com/gabime/spdlog/archive/refs/tags/v1.16.0.zip .. [32;1mok[0m
+[0mchecking for pkgconf ... [31;1mno[0m
+[0mchecking for pkg-config ... [31;1mno[0m
+C:\Program Files\CMake\bin\cmake -DSPDLOG_BUILD_TESTS=OFF -DSPDLOG_BUILD_EXAMPLE=OFF -DCMAKE_BUILD_TYPE=Release -DSPDLOG_BUILD_SHARED=OFF -DSPDLOG_USE_STD_FORMAT=ON -DSPDLOG_FMT_EXTERNAL=OFF -DSPDLOG_FMT_EXTERNAL_HO=OFF -DSPDLOG_NO_EXCEPTIONS=OFF -DSPDLOG_WCHAR_SUPPORT=ON -DSPDLOG_WCHAR_FILENAMES=OFF -DSPDLOG_UTF8_TO_WCHAR_CONSOLE=OFF -DSPDLOG_WCHAR_CONSOLE=OFF -DSPDLOG_NO_TLS=OFF -DSPDLOG_NO_THREAD_ID=OFF -DCMAKE_INSTALL_PREFIX=C:\Users\runneradmin\AppData\Local\.xmake\packages\s\spdlog\v1.16.0\1053dccb2da94316b3bef3cb1db15374 -DCMAKE_INSTALL_LIBDIR:PATH=lib -G Ninja -DCMAKE_MAKE_PROGRAM=C:\ProgramData\Chocolatey\bin\ninja.exe -DBUILD_SHARED_LIBS=OFF -DCMAKE_LINKER_TYPE=MSVC -DCMAKE_COMPILE_PDB_OUTPUT_DIRECTORY=C:/Users/runneradmin/AppData/Local/.xmake/cache/packages/2610/s/spdlog/v1.16.0/source/build_c071ab6d/pdb -DCMAKE_PDB_OUTPUT_DIRECTORY=C:/Users/runneradmin/AppData/Local/.xmake/cache/packages/2610/s/spdlog/v1.16.0/source/build_c071ab6d/pdb -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreadedDLL -DCMAKE_POLICY_VERSION_MINIMUM=3.5 "-DCMAKE_CXX_FLAGS_RELEASE=/O2 /Ob2 /DNDEBUG -MD" "-DCMAKE_C_FLAGS=/DWIN32 /D_WINDOWS" "-DCMAKE_CXX_FLAGS=/DWIN32 /D_WINDOWS /GR /EHsc" -DCMAKE_EXE_LINKER_FLAGS_RELEASE=/INCREMENTAL:NO -DCMAKE_SHARED_LINKER_FLAGS_RELEASE=/INCREMENTAL:NO -DCMAKE_STATIC_LINKER_FLAGS_RELEASE= -DCMAKE_STATIC_LINKER_FLAGS=/machine:x64 "-DCMAKE_C_FLAGS_RELEASE=/O2 /Ob2 /DNDEBUG -MD" -DCMAKE_SHARED_LINKER_FLAGS=/machine:x64 C:\Users\runneradmin\AppData\Local\.xmake\cache\packages\2610\s\spdlog\v1.16.0\source
+-- The CXX compiler identification is MSVC 19.51.36260.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: C:/Program Files/Microsoft Visual Studio/18/Enterprise/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Build spdlog: 1.16.0
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - not found
+-- Found Threads: TRUE
+-- Build type: Release
+-- Looking for _fwrite_nolock
+-- Looking for _fwrite_nolock - found
+-- Generating install
+-- Configuring done (6.8s)
+-- Generating done (0.1s)
+CMake Warning (unused-cli):
+  Manually-specified variables were not used by the project:
+
+    CMAKE_C_FLAGS
+    CMAKE_C_FLAGS_RELEASE
+
+
+-- Build files have been written to: C:/Users/runneradmin/AppData/Local/.xmake/cache/packages/2610/s/spdlog/v1.16.0/source/build_c071ab6d
+[0mchecking for pkgconf ... [31;1mno[0m
+[0mchecking for pkg-config ... [31;1mno[0m
+C:\ProgramData\Chocolatey\bin\ninja.exe install -C C:\Users\runneradmin\AppData\Local\.xmake\cache\packages\2610\s\spdlog\v1.16.0\source\build_c071ab6d -j 6
+ninja: Entering directory `C:\Users\runneradmin\AppData\Local\.xmake\cache\packages\2610\s\spdlog\v1.16.0\source\build_c071ab6d'
+[1/8] Building CXX object CMakeFiles\spdlog.dir\src\stdout_sinks.cpp.obj
+[2/8] Building CXX object CMakeFiles\spdlog.dir\src\cfg.cpp.obj
+[3/8] Building CXX object CMakeFiles\spdlog.dir\src\color_sinks.cpp.obj
+[4/8] Building CXX object CMakeFiles\spdlog.dir\src\file_sinks.cpp.obj
+[5/8] Building CXX object CMakeFiles\spdlog.dir\src\async.cpp.obj
+[6/8] Building CXX object CMakeFiles\spdlog.dir\src\spdlog.cpp.obj
+[7/8] Linking CXX static library spdlog.lib
+[7/8] Install the project...
+-- Install configuration: "Release"
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/async.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/async_logger-inl.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/async_logger.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/cfg
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/cfg/argv.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/cfg/env.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/cfg/helpers-inl.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/cfg/helpers.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/common-inl.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/common.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/details
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/details/backtracer-inl.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/details/backtracer.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/details/circular_q.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/details/console_globals.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/details/file_helper-inl.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/details/file_helper.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/details/fmt_helper.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/details/log_msg-inl.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/details/log_msg.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/details/log_msg_buffer-inl.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/details/log_msg_buffer.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/details/mpmc_blocking_q.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/details/null_mutex.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/details/os-inl.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/details/os.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/details/periodic_worker-inl.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/details/periodic_worker.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/details/registry-inl.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/details/registry.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/details/synchronous_factory.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/details/tcp_client-windows.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/details/tcp_client.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/details/thread_pool-inl.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/details/thread_pool.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/details/udp_client-windows.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/details/udp_client.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/details/windows_include.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/fmt
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/fmt/bin_to_hex.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/fmt/chrono.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/fmt/compile.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/fmt/fmt.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/fmt/ostr.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/fmt/ranges.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/fmt/std.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/fmt/xchar.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/formatter.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/fwd.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/logger-inl.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/logger.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/mdc.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/pattern_formatter-inl.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/pattern_formatter.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/android_sink.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/ansicolor_sink-inl.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/ansicolor_sink.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/base_sink-inl.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/base_sink.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/basic_file_sink-inl.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/basic_file_sink.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/callback_sink.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/daily_file_sink.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/dist_sink.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/dup_filter_sink.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/hourly_file_sink.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/kafka_sink.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/mongo_sink.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/msvc_sink.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/null_sink.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/ostream_sink.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/qt_sinks.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/ringbuffer_sink.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/rotating_file_sink-inl.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/rotating_file_sink.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/sink-inl.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/sink.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/stdout_color_sinks-inl.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/stdout_color_sinks.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/stdout_sinks-inl.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/stdout_sinks.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/syslog_sink.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/systemd_sink.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/tcp_sink.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/udp_sink.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/wincolor_sink-inl.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/wincolor_sink.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/sinks/win_eventlog_sink.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/spdlog-inl.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/spdlog.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/stopwatch.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/tweakme.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/include/spdlog/version.h
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/lib/spdlog.lib
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/lib/pkgconfig/spdlog.pc
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/lib/cmake/spdlog/spdlogConfigTargets.cmake
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/lib/cmake/spdlog/spdlogConfigTargets-release.cmake
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/lib/cmake/spdlog/spdlogConfig.cmake
+-- Installing: C:/Users/runneradmin/AppData/Local/.xmake/packages/s/spdlog/v1.16.0/1053dccb2da94316b3bef3cb1db15374/lib/cmake/spdlog/spdlogConfigVersion.cmake
+[0mchecking for xmake::spdlog ... [32;1mspdlog v1.16.0[0m
+[0m[1m{[0m 
+  [0m[31;1mlibfiles[0m[0m[0m[0m [2m=[0m [0m[1m{[0m 
+    [0m[31m"[0m[31;1mC:\Users\runneradmin\AppData\Local\.xmake\packages\s\spdlog\v1.16.0\1053dccb2da94316b3bef3cb1db15374\lib\spdlog.lib[0m[31m"[0m, 
+  [0m[1m}[0m,
+  [0m[31;1mversion[0m[0m[0m[0m [2m=[0m [0m[31m"[0m[31;1mv1.16.0[0m[31m"[0m,
+  [0m[31;1mlinkdirs[0m[0m[0m[0m [2m=[0m [0m[1m{[0m 
+    [0m[31m"[0m[31;1mC:\Users\runneradmin\AppData\Local\.xmake\packages\s\spdlog\v1.16.0\1053dccb2da94316b3bef3cb1db15374\lib[0m[31m"[0m, 
+  [0m[1m}[0m,
+  [0m[31;1mlinks[0m[0m[0m[0m [2m=[0m [0m[1m{[0m 
+    [0m[31m"[0m[31;1mspdlog[0m[31m"[0m, 
+  [0m[1m}[0m,
+  [0m[31;1msysincludedirs[0m[0m[0m[0m [2m=[0m [0m[1m{[0m 
+    [0m[31m"[0m[31;1mC:\Users\runneradmin\AppData\Local\.xmake\packages\s\spdlog\v1.16.0\1053dccb2da94316b3bef3cb1db15374\include[0m[31m"[0m, 
+  [0m[1m}[0m,
+  [0m[31;1mdefines[0m[0m[0m[0m [2m=[0m [0m[1m{[0m 
+    [0m[31m"[0m[31;1mSPDLOG_COMPILED_LIB[0m[31m"[0m,
+    [0m[31m"[0m[31;1mSPDLOG_USE_STD_FORMAT[0m[31m"[0m,
+    [0m[31m"[0m[31;1mSPDLOG_WCHAR_TO_UTF8_SUPPORT[0m[31m"[0m, 
+  [0m[1m}[0m,
+  [0m[31;1mstatic[0m[0m[0m[0m [2m=[0m [0m[34mtrue[0m[0m[0m,
+  [0m[31;1mlicense[0m[0m[0m[0m [2m=[0m [0m[31m"[0m[31;1mMIT[0m[31m"[0m, 
+[0m[1m}[0m
+
+[0m[2mchecking for flags (-std:c++20) ... [32;1mok[0m
+[0m[2m> checking for c++ includes(spdlog/spdlog.h)[0m
+[0m[2m> checking for c++ funcs(spdlog::info)[0m
+[0m[2m> checking for c++ links(spdlog)[0m
+[0m[2m> checking for c++ snippet(has_cxxfuncs)[0m
+[0m[33m  => [0minstall spdlog v1.16.0 .. [32;1mok[0m
+C:\ProgramData\Chocolatey\bin\aria2c.exe --no-conf=true --console-log-level=notice "--user-agent=Xmake/3.1.1+HEAD.3ba37a0d4 (Windows;) aria2/1.37.0" --split=8 --max-connection-per-server=8 --min-split-size=1M --allow-overwrite=true --dir=. --out=simpleini-v4.25.tar.gz https://github.com/brofield/simpleini/archive/refs/tags/v4.25.tar.gz
+
+10/15 04:56:16 [[1;32mNOTICE[0m] Downloading 1 item(s)
+
+10/15 04:56:17 [[1;32mNOTICE[0m] CUID#7 - Redirecting to https://codeload.github.com/brofield/simpleini/tar.gz/refs/tags/v4.25
+
+10/15 04:56:17 [[1;32mNOTICE[0m] Download complete: ./simpleini-v4.25.tar.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+eb1b51|OK  |   122KiB/s|./simpleini-v4.25.tar.gz
+
+Status Legend:
+(OK):download completed.
+C:\Windows\System32\tar.exe -xf C:\Users\runneradmin\AppData\Local\.xmake\cache\packages\2610\s\simpleini\v4.25\simpleini-v4.25.tar.gz
+[0m[33m  => [0mdownload https://github.com/brofield/simpleini/archive/refs/tags/v4.25.tar.gz .. [32;1mok[0m
+[0mchecking for xmake::simpleini ... [32;1msimpleini v4.25[0m
+[0m[1m{[0m 
+  [0m[31;1mlicense[0m[0m[0m[0m [2m=[0m [0m[31m"[0m[31;1mMIT[0m[31m"[0m,
+  [0m[31;1mversion[0m[0m[0m[0m [2m=[0m [0m[31m"[0m[31;1mv4.25[0m[31m"[0m,
+  [0m[31;1msysincludedirs[0m[0m[0m[0m [2m=[0m [0m[1m{[0m 
+    [0m[31m"[0m[31;1mC:\Users\runneradmin\AppData\Local\.xmake\packages\s\simpleini\v4.25\645b17e1af5e415da7d3a05419b3a47a\include[0m[31m"[0m, 
+  [0m[1m}[0m,
+  [0m[31;1mdefines[0m[0m[0m[0m [2m=[0m [0m[31m"[0m[31;1mSI_CONVERT_WIN32[0m[31m"[0m, 
+[0m[1m}[0m
+
+patching C:\Users\runneradmin\AppData\Local\.xmake\packages\s\simpleini\v4.25\645b17e1af5e415da7d3a05419b3a47a\lib\pkgconfig\simpleini.pc ..
+[0m[2m> checking for c++ includes(SimpleIni.h)[0m
+[0m[2m> checking for c++ snippet(test)[0m
+[0m[33m  => [0minstall simpleini v4.25 .. [32;1mok[0m
+C:\ProgramData\Chocolatey\bin\aria2c.exe --no-conf=true --console-log-level=notice "--user-agent=Xmake/3.1.1+HEAD.3ba37a0d4 (Windows;) aria2/1.37.0" --split=8 --max-connection-per-server=8 --min-split-size=1M --allow-overwrite=true --dir=. --out=xbyak-v7.06.zip https://github.com/herumi/xbyak/archive/v7.06.zip
+
+10/15 04:56:18 [[1;32mNOTICE[0m] Downloading 1 item(s)
+
+10/15 04:56:18 [[1;32mNOTICE[0m] CUID#7 - Redirecting to https://codeload.github.com/herumi/xbyak/zip/refs/tags/v7.06
+
+                                                                               
+[#2d83d9 0B/0B CN:1 DL:0B]
+10/15 04:56:19 [[1;32mNOTICE[0m] Download complete: ./xbyak-v7.06.zip
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+2d83d9|OK  |   202KiB/s|./xbyak-v7.06.zip
+
+Status Legend:
+(OK):download completed.
+C:\hostedtoolcache\windows\xmake\3.1.1\x64\winenv\bin\7z x -y xbyak-v7.06.zip -snl- -osource.tmp
+
+7-Zip 24.08 (x64) : Copyright (c) 1999-2024 Igor Pavlov : 2024-08-11
+
+Scanning the drive for archives:
+1 file, 306204 bytes (300 KiB)
+
+Extracting archive: xbyak-v7.06.zip
+--
+Path = xbyak-v7.06.zip
+Type = zip
+Physical Size = 306204
+Comment = fc183427e852a70fb98add1ba640020a53034bb0
+
+Everything is Ok
+
+Folders: 11
+Files: 132
+Size:       1221153
+Compressed: 306204
+[0m[33m  => [0mdownload https://github.com/herumi/xbyak/archive/v7.06.zip .. [32;1mok[0m
+[0mchecking for xmake::xbyak ... [32;1mxbyak v7.06[0m
+[0m[1m{[0m 
+  [0m[31;1msysincludedirs[0m[0m[0m[0m [2m=[0m [0m[1m{[0m 
+    [0m[31m"[0m[31;1mC:\Users\runneradmin\AppData\Local\.xmake\packages\x\xbyak\v7.06\002829adb1ea4273b049c46126005707\include[0m[31m"[0m, 
+  [0m[1m}[0m,
+  [0m[31;1mversion[0m[0m[0m[0m [2m=[0m [0m[31m"[0m[31;1mv7.06[0m[31m"[0m, 
+[0m[1m}[0m
+
+patching C:\Users\runneradmin\AppData\Local\.xmake\packages\x\xbyak\v7.06\002829adb1ea4273b049c46126005707\lib\pkgconfig\xbyak.pc ..
+[0m[2m> checking for c++ includes(xbyak/xbyak.h)[0m
+[0m[2m> checking for c++ snippet(test)[0m
+[0m[33m  => [0minstall xbyak v7.06 .. [32;1mok[0m
+C:\ProgramData\Chocolatey\bin\aria2c.exe --no-conf=true --console-log-level=notice "--user-agent=Xmake/3.1.1+HEAD.3ba37a0d4 (Windows;) aria2/1.37.0" --split=8 --max-connection-per-server=8 --min-split-size=1M --allow-overwrite=true --dir=. --out=rapidcsv-v8.92.zip https://github.com/d99kris/rapidcsv/archive/refs/tags/v8.92.zip
+
+10/15 04:56:21 [[1;32mNOTICE[0m] Downloading 1 item(s)
+
+10/15 04:56:22 [[1;32mNOTICE[0m] CUID#7 - Redirecting to https://codeload.github.com/d99kris/rapidcsv/zip/refs/tags/v8.92
+
+10/15 04:56:22 [[1;32mNOTICE[0m] Download complete: ./rapidcsv-v8.92.zip
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+94f677|OK  |   345KiB/s|./rapidcsv-v8.92.zip
+
+Status Legend:
+(OK):download completed.
+C:\hostedtoolcache\windows\xmake\3.1.1\x64\winenv\bin\7z x -y rapidcsv-v8.92.zip -snl- -osource.tmp
+
+7-Zip 24.08 (x64) : Copyright (c) 1999-2024 Igor Pavlov : 2024-08-11
+
+Scanning the drive for archives:
+1 file, 285682 bytes (279 KiB)
+
+Extracting archive: rapidcsv-v8.92.zip
+--
+Path = rapidcsv-v8.92.zip
+Type = zip
+Physical Size = 285682
+Comment = 3aa768a4adcaef528f2343a1a2e736a637e79168
+
+Everything is Ok
+
+Folders: 15
+Files: 155
+Size:       906363
+Compressed: 285682
+[0m[33m  => [0mdownload https://github.com/d99kris/rapidcsv/archive/refs/tags/v8.92.zip .. [32;1mok[0m
+[0mchecking for xmake::rapidcsv ... [32;1mrapidcsv v8.92[0m
+[0m[1m{[0m 
+  [0m[31;1mlicense[0m[0m[0m[0m [2m=[0m [0m[31m"[0m[31;1mBSD-3-Clause[0m[31m"[0m,
+  [0m[31;1mversion[0m[0m[0m[0m [2m=[0m [0m[31m"[0m[31;1mv8.92[0m[31m"[0m,
+  [0m[31;1msysincludedirs[0m[0m[0m[0m [2m=[0m [0m[1m{[0m 
+    [0m[31m"[0m[31;1mC:\Users\runneradmin\AppData\Local\.xmake\packages\r\rapidcsv\v8.92\3ea9c5686c084d99b7090d143af1b725\include[0m[31m"[0m, 
+  [0m[1m}[0m, 
+[0m[1m}[0m
+
+patching C:\Users\runneradmin\AppData\Local\.xmake\packages\r\rapidcsv\v8.92\3ea9c5686c084d99b7090d143af1b725\lib\pkgconfig\rapidcsv.pc ..
+[0m[2m> checking for c++ includes(rapidcsv.h)[0m
+[0m[2m> checking for c++ snippet(test)[0m
+[0m[33m  => [0minstall rapidcsv v8.92 .. [32;1mok[0m
+C:\ProgramData\Chocolatey\bin\aria2c.exe --no-conf=true --console-log-level=notice "--user-agent=Xmake/3.1.1+HEAD.3ba37a0d4 (Windows;) aria2/1.37.0" --split=8 --max-connection-per-server=8 --min-split-size=1M --allow-overwrite=true --dir=C:\Users\RUNNER~1\AppData\Local\Temp\.xmake\261015 --out=_10b93a0fdf1f486b2ff87a3d3f77306a.7z https://github.com/alandtse/CommonLibSSE-NG/releases/download/v12.1.0/commonlibsse-ng-prebuilt-v12.1.0-all-msvc.7z
+
+10/15 04:56:26 [[1;32mNOTICE[0m] Downloading 1 item(s)
+
+10/15 04:56:27 [[1;32mNOTICE[0m] CUID#7 - Redirecting to https://release-assets.githubusercontent.com/github-production-release-asset/398923224/5550046b-ca69-483d-a27e-3b499f8ac2f9?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-10-15T05%3A44%3A53Z&rscd=attachment%3B+filename%3Dcommonlibsse-ng-prebuilt-v12.1.0-all-msvc.7z&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-10-15T04%3A44%3A12Z&ske=2026-10-15T05%3A44%3A53Z&sks=b&skv=2018-11-09&sig=MiPg0OrByV5NLYh%2FCMW%2FWtd9uO%2F0YSVjmOno%2BFjSTAE%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc5MjA0MTk4NywibmJmIjoxNzkyMDQwMTg3LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.XvSjN6FwyJMFitrV_UAJLfP7iBSpImTDvo0L9VSpcAg&response-content-disposition=attachment%3B%20filename%3Dcommonlibsse-ng-prebuilt-v12.1.0-all-msvc.7z&response-content-type=application%2Foctet-stream
+
+10/15 04:56:27 [[1;32mNOTICE[0m] Allocating disk space. Use --file-allocation=none to disable it. See --file-allocation option in man page for more details.
+
+                                                                               
+[#48566f 0B/43MiB(0%) CN:1 DL:0B]
+10/15 04:56:30 [[1;32mNOTICE[0m] CUID#9 - Redirecting to https://release-assets.githubusercontent.com/github-production-release-asset/398923224/5550046b-ca69-483d-a27e-3b499f8ac2f9?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-10-15T05%3A44%3A39Z&rscd=attachment%3B+filename%3Dcommonlibsse-ng-prebuilt-v12.1.0-all-msvc.7z&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-10-15T04%3A43%3A44Z&ske=2026-10-15T05%3A44%3A39Z&sks=b&skv=2018-11-09&sig=RBEeBrcIIrABJTCwH7r8R9h%2BNPc3YvY3AjopYnQdnNw%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc5MjA0MTk5MCwibmJmIjoxNzkyMDQwMTkwLCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.tZayKgfsHN-wCYTgNNry3vqbjpNdSnuf7ATGUh6EjrI&response-content-disposition=attachment%3B%20filename%3Dcommonlibsse-ng-prebuilt-v12.1.0-all-msvc.7z&response-content-type=application%2Foctet-stream
+10/15 04:56:30 [[1;32mNOTICE[0m] CUID#11 - Redirecting to https://release-assets.githubusercontent.com/github-production-release-asset/398923224/5550046b-ca69-483d-a27e-3b499f8ac2f9?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-10-15T05%3A44%3A39Z&rscd=attachment%3B+filename%3Dcommonlibsse-ng-prebuilt-v12.1.0-all-msvc.7z&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-10-15T04%3A43%3A44Z&ske=2026-10-15T05%3A44%3A39Z&sks=b&skv=2018-11-09&sig=RBEeBrcIIrABJTCwH7r8R9h%2BNPc3YvY3AjopYnQdnNw%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc5MjA0MTk5MCwibmJmIjoxNzkyMDQwMTkwLCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.tZayKgfsHN-wCYTgNNry3vqbjpNdSnuf7ATGUh6EjrI&response-content-disposition=attachment%3B%20filename%3Dcommonlibsse-ng-prebuilt-v12.1.0-all-msvc.7z&response-content-type=application%2Foctet-stream
+
+10/15 04:56:30 [[1;32mNOTICE[0m] CUID#14 - Redirecting to https://release-assets.githubusercontent.com/github-production-release-asset/398923224/5550046b-ca69-483d-a27e-3b499f8ac2f9?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-10-15T05%3A44%3A39Z&rscd=attachment%3B+filename%3Dcommonlibsse-ng-prebuilt-v12.1.0-all-msvc.7z&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-10-15T04%3A43%3A44Z&ske=2026-10-15T05%3A44%3A39Z&sks=b&skv=2018-11-09&sig=RBEeBrcIIrABJTCwH7r8R9h%2BNPc3YvY3AjopYnQdnNw%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc5MjA0MTk5MCwibmJmIjoxNzkyMDQwMTkwLCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.tZayKgfsHN-wCYTgNNry3vqbjpNdSnuf7ATGUh6EjrI&response-content-disposition=attachment%3B%20filename%3Dcommonlibsse-ng-prebuilt-v12.1.0-all-msvc.7z&response-content-type=application%2Foctet-stream
+
+10/15 04:56:30 [[1;32mNOTICE[0m] CUID#15 - Redirecting to https://release-assets.githubusercontent.com/github-production-release-asset/398923224/5550046b-ca69-483d-a27e-3b499f8ac2f9?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-10-15T05%3A44%3A39Z&rscd=attachment%3B+filename%3Dcommonlibsse-ng-prebuilt-v12.1.0-all-msvc.7z&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-10-15T04%3A43%3A44Z&ske=2026-10-15T05%3A44%3A39Z&sks=b&skv=2018-11-09&sig=RBEeBrcIIrABJTCwH7r8R9h%2BNPc3YvY3AjopYnQdnNw%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc5MjA0MTk5MCwibmJmIjoxNzkyMDQwMTkwLCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.tZayKgfsHN-wCYTgNNry3vqbjpNdSnuf7ATGUh6EjrI&response-content-disposition=attachment%3B%20filename%3Dcommonlibsse-ng-prebuilt-v12.1.0-all-msvc.7z&response-content-type=application%2Foctet-stream
+
+10/15 04:56:30 [[1;32mNOTICE[0m] CUID#10 - Redirecting to https://release-assets.githubusercontent.com/github-production-release-asset/398923224/5550046b-ca69-483d-a27e-3b499f8ac2f9?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-10-15T05%3A44%3A39Z&rscd=attachment%3B+filename%3Dcommonlibsse-ng-prebuilt-v12.1.0-all-msvc.7z&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-10-15T04%3A43%3A44Z&ske=2026-10-15T05%3A44%3A39Z&sks=b&skv=2018-11-09&sig=RBEeBrcIIrABJTCwH7r8R9h%2BNPc3YvY3AjopYnQdnNw%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc5MjA0MTk5MCwibmJmIjoxNzkyMDQwMTkwLCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.tZayKgfsHN-wCYTgNNry3vqbjpNdSnuf7ATGUh6EjrI&response-content-disposition=attachment%3B%20filename%3Dcommonlibsse-ng-prebuilt-v12.1.0-all-msvc.7z&response-content-type=application%2Foctet-stream
+
+10/15 04:56:30 [[1;32mNOTICE[0m] CUID#12 - Redirecting to https://release-assets.githubusercontent.com/github-production-release-asset/398923224/5550046b-ca69-483d-a27e-3b499f8ac2f9?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-10-15T05%3A44%3A39Z&rscd=attachment%3B+filename%3Dcommonlibsse-ng-prebuilt-v12.1.0-all-msvc.7z&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-10-15T04%3A43%3A44Z&ske=2026-10-15T05%3A44%3A39Z&sks=b&skv=2018-11-09&sig=RBEeBrcIIrABJTCwH7r8R9h%2BNPc3YvY3AjopYnQdnNw%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc5MjA0MTk5MCwibmJmIjoxNzkyMDQwMTkwLCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.tZayKgfsHN-wCYTgNNry3vqbjpNdSnuf7ATGUh6EjrI&response-content-disposition=attachment%3B%20filename%3Dcommonlibsse-ng-prebuilt-v12.1.0-all-msvc.7z&response-content-type=application%2Foctet-stream
+
+10/15 04:56:30 [[1;32mNOTICE[0m] CUID#13 - Redirecting to https://release-assets.githubusercontent.com/github-production-release-asset/398923224/5550046b-ca69-483d-a27e-3b499f8ac2f9?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-10-15T05%3A44%3A39Z&rscd=attachment%3B+filename%3Dcommonlibsse-ng-prebuilt-v12.1.0-all-msvc.7z&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-10-15T04%3A43%3A44Z&ske=2026-10-15T05%3A44%3A39Z&sks=b&skv=2018-11-09&sig=RBEeBrcIIrABJTCwH7r8R9h%2BNPc3YvY3AjopYnQdnNw%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc5MjA0MTk5MCwibmJmIjoxNzkyMDQwMTkwLCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.tZayKgfsHN-wCYTgNNry3vqbjpNdSnuf7ATGUh6EjrI&response-content-disposition=attachment%3B%20filename%3Dcommonlibsse-ng-prebuilt-v12.1.0-all-msvc.7z&response-content-type=application%2Foctet-stream
+
+10/15 04:56:31 [[1;32mNOTICE[0m] Download complete: C:/Users/RUNNER~1/AppData/Local/Temp/.xmake/261015/_10b93a0fdf1f486b2ff87a3d3f77306a.7z
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+48566f|OK  |    13MiB/s|C:/Users/RUNNER~1/AppData/Local/Temp/.xmake/261015/_10b93a0fdf1f486b2ff87a3d3f77306a.7z
+
+Status Legend:
+(OK):download completed.
+C:\ProgramData\Chocolatey\bin\aria2c.exe --no-conf=true --console-log-level=notice "--user-agent=Xmake/3.1.1+HEAD.3ba37a0d4 (Windows;) aria2/1.37.0" --split=8 --max-connection-per-server=8 --min-split-size=1M --allow-overwrite=true --dir=C:\Users\RUNNER~1\AppData\Local\Temp\.xmake\261015 --out=_30770ba33657aeed4747519dbd0a9c75 https://github.com/alandtse/CommonLibSSE-NG/releases/download/v12.1.0/commonlibsse-ng-prebuilt-v12.1.0-all-msvc.7z.sha256
+
+10/15 04:56:31 [[1;32mNOTICE[0m] Downloading 1 item(s)
+
+10/15 04:56:32 [[1;32mNOTICE[0m] CUID#7 - Redirecting to https://release-assets.githubusercontent.com/github-production-release-asset/398923224/109289e7-d5d3-43f8-b143-04714f013b8a?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-10-15T05%3A46%3A00Z&rscd=attachment%3B+filename%3Dcommonlibsse-ng-prebuilt-v12.1.0-all-msvc.7z.sha256&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-10-15T04%3A45%3A05Z&ske=2026-10-15T05%3A46%3A00Z&sks=b&skv=2018-11-09&sig=2giBgOb4YstbBGoEXFMsOuBlym1BQ1MKu780vG2I4fo%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc5MjA0MDQ5MiwibmJmIjoxNzkyMDQwMTkyLCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.c7LYO52ZLn1zXrVNA4nFhvvIwGLtLhjiUys1R7tK56w&response-content-disposition=attachment%3B%20filename%3Dcommonlibsse-ng-prebuilt-v12.1.0-all-msvc.7z.sha256&response-content-type=application%2Foctet-stream
+
+10/15 04:56:32 [[1;32mNOTICE[0m] Download complete: C:/Users/RUNNER~1/AppData/Local/Temp/.xmake/261015/_30770ba33657aeed4747519dbd0a9c75
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+6ea351|OK  |    11KiB/s|C:/Users/RUNNER~1/AppData/Local/Temp/.xmake/261015/_30770ba33657aeed4747519dbd0a9c75
+
+Status Legend:
+(OK):download completed.
+C:\hostedtoolcache\windows\xmake\3.1.1\x64\winenv\bin\7z x -y C:\Users\RUNNER~1\AppData\Local\Temp\.xmake\261015\_10b93a0fdf1f486b2ff87a3d3f77306a.7z -snl- -oD:\a\FluidMotionSpiders\FluidMotionSpiders\lib\commonlibsse-ng\build\.prebuilt\v12.1.0
+
+7-Zip 24.08 (x64) : Copyright (c) 1999-2024 Igor Pavlov : 2024-08-11
+
+Scanning the drive for archives:
+1 file, 45855384 bytes (44 MiB)
+
+Extracting archive: C:\Users\RUNNER~1\AppData\Local\Temp\.xmake\261015\_10b93a0fdf1f486b2ff87a3d3f77306a.7z
+--
+Path = C:\Users\RUNNER~1\AppData\Local\Temp\.xmake\261015\_10b93a0fdf1f486b2ff87a3d3f77306a.7z
+Type = 7z
+Physical Size = 45855384
+Headers Size = 26511
+Method = LZMA2:28
+Solid = +
+Blocks = 1
+
+Everything is Ok
+
+Folders: 40
+Files: 2122
+Size:       1484688875
+Compressed: 45855384
+[0m[2mgenerating D:\a\FluidMotionSpiders\FluidMotionSpiders\lib\commonlibsse-ng\res\commonlibsse-ng-plugin.cpp.in to build\.gens\FluidMotionSpiders\windows\x64\releasedbg\commonlibsse-ng-plugin.cpp ..[0m
+[0mgenerating D:\a\FluidMotionSpiders\FluidMotionSpiders\lib\commonlibsse-ng\res\commonlibsse-ng-plugin.cpp.in ... [32;1mok[0m
+[0m[2mgenerating D:\a\FluidMotionSpiders\FluidMotionSpiders\lib\commonlibsse-ng\res\commonlib-plugin.rc.in to build\.gens\FluidMotionSpiders\windows\x64\releasedbg\commonlib-plugin.rc ..[0m
+[0mgenerating D:\a\FluidMotionSpiders\FluidMotionSpiders\lib\commonlibsse-ng\res\commonlib-plugin.rc.in ... [32;1mok[0m
+configure
+{
+    kind = static
+    skse_patch_safety = true
+    skse_xbyak = true
+    skyrim_ae = true
+    dotnet = C:\Program Files\dotnet\sdk\10.0.401
+    rex_ini = true
+    skyrim_se = true
+    ndk_stdcxx = true
+    vs = 2026
+    rex_toml = false
+    host = windows
+    dotnet_sdkver = 10.0.401
+    plat = windows
+    tests = false
+    rex_json = false
+    mode = releasedbg
+    builddir = build
+    skyrim_vr = true
+    arch = x64
+    ccache = true
+}
