@@ -55,6 +55,9 @@ namespace Config
 		float maxSeconds = 40.0f;
 		float cooldown = 3.0f;
 		bool  climbTrees = false;  // v2: tree trunks are walked around, not climbed
+		std::vector<std::string> noCrawl;  // v3: objects with holes (model path parts) are walked around, not crawled on
+		float pounceDist = 200.0f;         // v3: on a wall/ceiling within this distance of its target: drop down onto it
+		float failWait = 8.0f;             // v3: after a failed crawl, don't start another from the same spot for this long
 		bool  log = false;
 	};
 

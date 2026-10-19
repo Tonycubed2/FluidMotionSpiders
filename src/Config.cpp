@@ -93,6 +93,9 @@ namespace Config
 			clf("fMaxSeconds", cl.maxSeconds);
 			clf("fCooldown", cl.cooldown);
 			cl.climbTrees = ini.GetBoolValue("Crawl", "bClimbTrees", cl.climbTrees);
+			cl.noCrawl = SplitList(ini.GetValue("Crawl", "sNoCrawlModels", "cage,grate,grating,bars,portcullis,jail,gate,chain"));
+			clf("fPounceDist", cl.pounceDist);
+			clf("fFailWait", cl.failWait);
 			cl.log = ini.GetBoolValue("Crawl", "bLog", cl.log);
 		}
 

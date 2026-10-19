@@ -28,6 +28,7 @@ namespace SpiderClimb
 			bool            haveGood = false;
 			float           flip = 0, goodT = 0, recovT = -9.0f;
 			int             recov = 0;
+			bool            descending = false;  // v3: gave up on the target, climbing down to the floor
 		};
 
 		std::vector<Crawler>                  g_c;
@@ -49,6 +50,8 @@ namespace SpiderClimb
 		{
 			RE::FormID target = 0;
 			float      best = 1e9f, bestT = 0, offT = -1.0f;
+			V3         failPos{}, failTgt{};  // v3: where the last crawl failed, and where its target was
+			float      failT = -1e9f;
 		};
 		std::unordered_map<RE::FormID, Memo>  g_memo;
 		float                                 g_time = 0, g_scanT = 0, g_statT = 0;
@@ -100,6 +103,35 @@ namespace SpiderClimb
 
 		float Hor(const V3& a_n) { return std::sqrt((std::max)(0.0f, 1.0f - a_n.z * a_n.z)); }
 
+		// v3: cages, cells, grates, gates... (sNoCrawlModels, by model path). Their collision has holes, so a spider
+		// on them kept finding "surface" one step and nothing the next and got stuck or fell through.
+		bool NoCrawl(RE::TESObjectREFR* a_ref)
+		{
+			auto* base = a_ref ? a_ref->GetBaseObject() : nullptr;
+			if (!base) {
+				return false;
+			}
+			static std::unordered_map<RE::TESBoundObject*, bool> cache;
+			if (auto it = cache.find(base); it != cache.end()) {
+				return it->second;
+			}
+			bool        no = false;
+			auto*       model = base->As<RE::TESModel>();
+			const char* path = model ? model->GetModel() : nullptr;
+			if (path && *path) {
+				std::string lower(path);
+				std::ranges::transform(lower, lower.begin(), [](unsigned char ch) { return static_cast<char>(std::tolower(ch)); });
+				for (auto pat : Config::Get().climb.noCrawl) {
+					std::ranges::transform(pat, pat.begin(), [](unsigned char ch) { return static_cast<char>(std::tolower(ch)); });
+					if (!pat.empty() && lower.find(pat) != std::string::npos) {
+						no = true;
+						break;
+					}
+				}
+			}
+			return cache[base] = no;
+		}
+
 		struct Step
 		{
 			V3 A, n;
@@ -124,6 +156,9 @@ namespace SpiderClimb
 				// hit fails the step, so the sideways tries below steer it around the trunk on the ground.
 				if (!cfg.climbTrees && (hit.layer == RE::COL_LAYER::kTrees ||
 										   (hit.ref && hit.ref->GetBaseObject() && hit.ref->GetBaseObject()->Is(RE::FormType::Tree)))) {
+					return false;
+				}
+				if (NoCrawl(hit.ref)) {
 					return false;
 				}
 				++g_probes;
@@ -207,7 +242,17 @@ namespace SpiderClimb
 				ReleaseController(a, true);
 			}
 			Host::Claim(c.id, 0.0f);
-			const bool bad = std::strcmp(a_reason, "arrived") != 0 && std::strcmp(a_reason, "done") != 0;
+			const bool bad = std::strcmp(a_reason, "arrived") != 0 && std::strcmp(a_reason, "done") != 0 && std::strcmp(a_reason, "pounce") != 0;
+			if (bad || c.descending) {
+				auto& m = g_memo[c.id];
+				if (m.failT < g_time - 0.5f) {
+					m.failPos = c.A;
+					if (auto tp = c.target.get(); tp.get()) {
+						m.failTgt = tp->GetPosition();
+					}
+					m.failT = g_time;
+				}
+			}
 			g_cool[c.id] = g_time + (bad ? Config::Get().climb.cooldown : 1.5f);
 			if (Config::Get().climb.log && g_endLogs++ < 200) {
 				logger::info("CLIMB end {:08X} '{}' {} after {:.1f}s n.z={:.2f} pos=({:.0f},{:.0f},{:.0f}) goal=({:.0f},{:.0f},{:.0f})", c.id, c.name, a_reason, c.t, c.n.z,
@@ -236,6 +281,41 @@ namespace SpiderClimb
 			}
 			Host::NoteDriven(c.id, c.speed);
 			Host::Claim(c.id, kClaimSec);
+		}
+
+		// v3: instead of letting go of a wall it is stuck on (and then trying the same wall again a few seconds later),
+		// a stuck spider climbs down to the floor below it first. Only once; if that fails too it lets go.
+		bool Descend(Crawler& c, const Raycast::Caster& r, RE::Actor* a)
+		{
+			if (c.descending || c.n.z > 0.75f) {
+				return false;
+			}
+			Raycast::Hit h;
+			const V3     from = c.A + c.nT * (Config::Get().climb.hover * c.scale);
+			if (!r.CastSolid(from, from - V3{ 0, 0, 3000.0f }, h) || Raycast::IsActorRef(h.ref) || h.normal.z < 0.6f) {
+				return false;
+			}
+			auto& m = g_memo[c.id];
+			m.failPos = c.A;
+			if (auto tp = c.target.get(); tp.get()) {
+				m.failTgt = tp->GetPosition();
+			}
+			m.failT = g_time;
+			c.descending = true;
+			c.pursue = false;
+			c.hold = false;
+			c.goal = h.point;
+			c.stuck = 0.0f;
+			c.recov = 0;
+			c.flip = 0.0f;
+			c.progT = 0.0f;
+			c.progDist = 1e9f;
+			if (Config::Get().climb.log) {
+				logger::info("CLIMB {:08X} '{}' stuck at ({:.0f},{:.0f},{:.0f}) n.z={:.2f} - climbing down to the floor ({:.0f} below)", c.id, c.name, c.A.x, c.A.y, c.A.z,
+					c.n.z, c.A.z - h.point.z);
+			}
+			(void)a;
+			return true;
 		}
 
 		bool UpdateOne(Crawler& c, float dt)
@@ -282,6 +362,17 @@ namespace SpiderClimb
 				c.goal = tgt->GetPosition() + V3{ 0, 0, 0.3f * (std::max)(tgt->GetHeight(), 40.0f) };
 			}
 
+				// v3: pounce. On a wall or ceiling right next to its target, drop down onto it: the fight happens on the
+			// floor, where the spider can be hit (on a wall the game's collision capsule stays upright and doesn't
+			// match the body, so it was very hard to hit there).
+			if (c.pursue && tgt && !c.descending && cfg.pounceDist > 0.0f && c.n.z < 0.3f) {
+				const V3    tp = tgt->GetPosition();
+				const float hd = std::hypot(tp.x - c.A.x, tp.y - c.A.y);
+				if (hd < cfg.pounceDist * c.scale && c.A.z - tp.z > 50.0f * c.scale) {
+					End(c, a, "pounce");
+					return false;
+				}
+			}
 			const V3    d = c.goal - c.A;
 			const float dist3 = d.Length();
 			const float stop = c.pursue ? cfg.stopDist * sc : 18.0f * sc;
@@ -344,7 +435,17 @@ namespace SpiderClimb
 				auto crosses = [&](const Step& t) {
 					const float    hv = cfg.hover * c.scale * 0.7f;
 					Raycast::Hit   h;
-					const bool     x = r.CastSolid(c.A + c.nT * hv, t.A + t.n * hv, h) && !Raycast::IsActorRef(h.ref);
+					auto blocked = [&](const V3& a_from, const V3& a_to) { return r.CastSolid(a_from, a_to, h) && !Raycast::IsActorRef(h.ref); };
+					bool x = blocked(c.A + c.nT * hv, t.A + t.n * hv);
+					// v3: a step that turns the body by more than ~80 degrees wraps around an edge. It must really go
+					// AROUND it: out past the edge along the current surface, then over to the new one. A spider on a
+					// ceiling used to find the floor of the room above through a seam and walk on top of it.
+					if (!x && t.n.Dot(c.nT) < 0.2f) {
+						const V3    p0 = c.A + c.nT * hv;
+						const V3    along = OnPlane(t.A - c.A, c.nT, c.fwd);
+						const V3    p1 = p0 + along * ((t.A - c.A).Length() + 2.0f * hv);
+						x = blocked(p0, p1) || blocked(p1, t.A + t.n * hv);
+					}
 					g_tunnel += x ? 1 : 0;
 					return x;
 				};
@@ -384,6 +485,9 @@ namespace SpiderClimb
 			if (struggling && c.haveGood && c.flip + c.stuck * 4.0f > 5.0f && c.t - c.recovT > 1.0f) {
 				c.recovT = c.t;
 				if (++c.recov >= 3) {
+					if (Descend(c, r, a)) {
+						return true;
+					}
 					End(c, a, "wedged");
 					return false;
 				}
@@ -412,6 +516,9 @@ namespace SpiderClimb
 				}
 			}
 			if (c.stuck > 1.2f) {
+				if (Descend(c, r, a)) {
+					return true;
+				}
 				End(c, a, "blocked");
 				return false;
 			}
@@ -507,6 +614,11 @@ namespace SpiderClimb
 					off = a_now - memo.offT > 0.6f;
 				} else {
 					memo.offT = -1.0f;
+				}
+				// v3: the last crawl from here toward this target failed: don't start the same one again right away.
+				if (g_time - memo.failT < cfg.failWait && (a->GetPosition() - memo.failPos).Length() < 300.0f &&
+					(tgt->GetPosition() - memo.failTgt).Length() < 300.0f) {
+					continue;
 				}
 				const bool high = d.z >= cfg.minRise && d3 < cfg.engage;
 				const bool stuck = a_now - memo.bestT > cfg.stuckSec && d3 < cfg.engage && dh > cfg.stopDist * 1.5f && !Host::Traversing(id);
