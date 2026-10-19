@@ -119,6 +119,13 @@ namespace SpiderClimb
 				if (!r.CastSolid(from, to, hit) || Raycast::IsActorRef(hit.ref)) {
 					return false;
 				}
+				// v2: tree trunks are not a surface to crawl on (unless bClimbTrees): with a tree between the spider
+				// and its target it went up the trunk and down the other side instead of walking around it. A tree
+				// hit fails the step, so the sideways tries below steer it around the trunk on the ground.
+				if (!cfg.climbTrees && (hit.layer == RE::COL_LAYER::kTrees ||
+										   (hit.ref && hit.ref->GetBaseObject() && hit.ref->GetBaseObject()->Is(RE::FormType::Tree)))) {
+					return false;
+				}
 				++g_probes;
 				const V3 dir = Norm(to - from, { 0, 0, -1 });
 				if ((hit.point - from).Length() < 1.5f) {

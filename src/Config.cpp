@@ -92,6 +92,7 @@ namespace Config
 			clf("fSepRadius", cl.sepRadius);
 			clf("fMaxSeconds", cl.maxSeconds);
 			clf("fCooldown", cl.cooldown);
+			cl.climbTrees = ini.GetBoolValue("Crawl", "bClimbTrees", cl.climbTrees);
 			cl.log = ini.GetBoolValue("Crawl", "bLog", cl.log);
 		}
 

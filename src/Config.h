@@ -54,6 +54,7 @@ namespace Config
 		float sepRadius = 60.0f;
 		float maxSeconds = 40.0f;
 		float cooldown = 3.0f;
+		bool  climbTrees = false;  // v2: tree trunks are walked around, not climbed
 		bool  log = false;
 	};
 
