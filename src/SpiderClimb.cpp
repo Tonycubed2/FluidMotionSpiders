@@ -29,6 +29,10 @@ namespace SpiderClimb
 			float           flip = 0, goodT = 0, recovT = -9.0f;
 			int             recov = 0;
 			bool            descending = false;  // v3: gave up on the target, climbing down to the floor
+			V3              prevN{ 0, 0, 1 };    // v4: surface it was on before the last big turn, and when that was
+			float           flipT = -9.0f;
+			V3              via{};               // v4: wall to walk to first when the target is straight overhead
+			bool            viaOn = false;
 		};
 
 		std::vector<Crawler>                  g_c;
@@ -381,7 +385,11 @@ namespace SpiderClimb
 				End(c, a, c.pursue ? "arrived" : "done");
 				return false;
 			}
-			V3       m = DesiredDir(d, c.nT, c.fwd);
+			// v4: target overhead - walk to the chosen wall first; once on it (or next to it) steer for the target again
+			if (c.viaOn && (c.n.z < 0.75f || std::hypot(c.via.x - c.A.x, c.via.y - c.A.y) < 30.0f * sc)) {
+				c.viaOn = false;
+			}
+			V3       m = DesiredDir(c.viaOn ? c.via - c.A : d, c.nT, c.fwd);
 			V3 corr{};
 			{
 				V3          sep{};
@@ -409,7 +417,7 @@ namespace SpiderClimb
 			}
 
 			V3 faceDir = m;
-			if (tgt) {
+			if (tgt && !c.viaOn) {
 				faceDir = OnPlane(tgt->GetPosition() - c.A, c.n, m);
 			}
 			{
@@ -449,11 +457,14 @@ namespace SpiderClimb
 					g_tunnel += x ? 1 : 0;
 					return x;
 				};
-				bool        ok = Advance(r, c, m, s, st) && !crosses(st);
+				// v4: no flip-flopping at an inside corner (floor <-> wall): a step straight back onto the surface it left
+				// less than 0.6s ago is refused, so it commits to the wall (or the floor) instead of shaking between them.
+				auto backflip = [&](const Step& t) { return t.n.Dot(c.nT) < 0.85f && c.t - c.flipT < 0.6f && t.n.Dot(c.prevN) > 0.95f; };
+				bool        ok = Advance(r, c, m, s, st) && !crosses(st) && !backflip(st);
 				for (int k = 0; k < 6 && !ok; ++k) {
 					const float deg = (k < 2 ? 35.0f : k < 4 ? 70.0f : 105.0f) * ((k & 1) ? -1.0f : 1.0f) * c.slide;
 					const V3    m2 = Norm(AxisAngle(c.nT, deg * kDeg) * m, m);
-					if (Advance(r, c, m2, s, st) && !crosses(st)) {
+					if (Advance(r, c, m2, s, st) && !crosses(st) && !backflip(st)) {
 						ok = true;
 						if (deg < 0.0f) {
 							c.slide = -c.slide;
@@ -462,6 +473,8 @@ namespace SpiderClimb
 				}
 				if (ok) {
 					if (st.n.Dot(c.nT) < 0.85f) {
+						c.prevN = c.nT;
+						c.flipT = c.t;
 						c.flip += 1.0f;
 					}
 					c.A = st.A;
@@ -561,6 +574,40 @@ namespace SpiderClimb
 				c.A = c.Av = hit.point;
 			}
 			c.fwd = OnPlane(c.fwd, c.n, { 0, 1, 0 });
+			// v4: target almost straight above (on a bridge, a ledge): there is no direction "toward" it on the floor,
+			// so the spider just walked back and forth underneath. Head for the nearest wall, pillar or bank instead
+			// (then up it, then over the edge toward the target).
+			if (a_target && c.n.z > 0.75f) {
+				const V3    td = a_target->GetPosition() - c.A;
+				const float tdh = std::hypot(td.x, td.y);
+				if (td.z > Config::Get().climb.minRise && tdh < 2.5f * Config::Get().climb.stopDist * c.scale) {
+					float best = 1e9f;
+					V3    bestDir{}, bestPt{};
+					for (int k = 0; k < 12; ++k) {
+						const float ang = k * (2.0f * kPi / 12.0f);
+						const V3    dir{ std::sin(ang), std::cos(ang), 0.0f };
+						const V3    from = c.A + V3{ 0, 0, 40.0f * c.scale };
+						Raycast::Hit wh;
+						if (r.CastSolid(from, from + dir * (800.0f * c.scale), wh) && !Raycast::IsActorRef(wh.ref) && std::fabs(wh.normal.z) < 0.5f) {
+							const float dist = (wh.point - from).Length();
+							if (dist < best) {
+								best = dist;
+								bestDir = dir;
+								bestPt = wh.point;
+							}
+						}
+					}
+					if (best < 1e8f) {
+						c.fwd = OnPlane(bestDir, c.n, c.fwd);
+						c.yaw = std::atan2(c.fwd.x, c.fwd.y);
+						c.via = bestPt;
+						c.viaOn = true;
+						if (Config::Get().climb.log) {
+							logger::info("CLIMB {:08X} target {:.0f} above, only {:.0f} away sideways - heading for the nearest wall {:.0f} away", c.id, td.z, tdh, best);
+						}
+					}
+				}
+			}
 			if (Config::Get().climb.log) {
 				logger::info("CLIMB start {:08X} '{}' {} goal=({:.0f},{:.0f},{:.0f}) dist={:.0f}", c.id, c.name, a_pursue ? "pursue" : "goto", a_goal.x, a_goal.y, a_goal.z,
 					(a_goal - c.A).Length());
@@ -622,7 +669,8 @@ namespace SpiderClimb
 				}
 				const bool high = d.z >= cfg.minRise && d3 < cfg.engage;
 				const bool stuck = a_now - memo.bestT > cfg.stuckSec && d3 < cfg.engage && dh > cfg.stopDist * 1.5f && !Host::Traversing(id);
-				if ((high || stuck || off) && d3 > cfg.stopDist * 1.2f && dh > cfg.stopDist * 0.8f) {
+				// v4: a target high up right above it counts too (it used to need some sideways distance)
+				if ((high || stuck || off) && d3 > cfg.stopDist * 1.2f && (dh > cfg.stopDist * 0.8f || high)) {
 					if (cfg.log) {
 						logger::info("CLIMB trigger {:08X} '{}' {} dz={:.0f} d3={:.0f} noProgress={:.1f}s", id, a->GetName(), high ? "target above" : off ? "off navmesh" : "stuck", d.z, d3, a_now - memo.bestT);
 					}

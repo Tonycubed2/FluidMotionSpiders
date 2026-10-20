@@ -1,6 +1,6 @@
 set_xmakever("3.0.0")
 set_project("FluidMotionSpiders")
-set_version("3.0.0")
+set_version("4.0.0")
 set_arch("x64")
 set_languages("c++23")
 set_warnings("allextra")
