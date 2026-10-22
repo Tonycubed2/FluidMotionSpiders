@@ -33,6 +33,10 @@ namespace SpiderClimb
 			float           flipT = -9.0f;
 			V3              via{};               // v4: wall to walk to first when the target is straight overhead
 			bool            viaOn = false;
+			float           viaT = 0.0f;         // v6: when the wall was picked
+			float           seekT = -9.0f;       // v6: last wall search
+			float           descT = 0.0f;        // v6: when climbing down started
+			int             seeks = 0;
 		};
 
 		std::vector<Crawler>                  g_c;
@@ -306,6 +310,7 @@ namespace SpiderClimb
 			}
 			m.failT = g_time;
 			c.descending = true;
+			c.descT = c.t;
 			c.pursue = false;
 			c.hold = false;
 			c.goal = h.point;
@@ -319,6 +324,69 @@ namespace SpiderClimb
 					c.n.z, c.A.z - h.point.z);
 			}
 			(void)a;
+			return true;
+		}
+
+		// v4-v6: the target is above the spider and something solid is in between (the deck of a bridge, a ledge):
+		// walking "toward" it just moves the spider back and forth underneath. Pick the nearest WIDE steep surface
+		// (river bank, cliff, building - three parallel rays 80u apart must all hit it at about the same distance,
+		// so thin bridge posts are skipped), walk into it, climb it, and come at the target from there.
+		bool SeekWall(Crawler& c, const Raycast::Caster& r, RE::Actor* a_target)
+		{
+			const auto& cfg = Config::Get().climb;
+			const float sc = c.scale;
+			if (!a_target || c.descending || c.viaOn || c.n.z < 0.75f || c.seeks >= 3) {
+				return false;
+			}
+			c.seekT = c.t;
+			const V3    tp = a_target->GetPosition();
+			const V3    td = tp - c.A;
+			const float tdh = std::hypot(td.x, td.y);
+			if (td.z < 40.0f * sc || tdh > 3.0f * cfg.stopDist * sc) {
+				return false;
+			}
+			Raycast::Hit lh;
+			const V3     eye = c.A + V3{ 0, 0, 40.0f * sc };
+			if (!r.CastSolid(eye, tp + V3{ 0, 0, 40.0f }, lh) || Raycast::IsActorRef(lh.ref)) {
+				return false;  // nothing in between: the normal crawl goes straight at it
+			}
+			auto wallAt = [&](const V3& a_from, const V3& a_dir, float& a_dist, V3& a_pt) {
+				Raycast::Hit wh;
+				if (!r.CastSolid(a_from, a_from + a_dir * (1500.0f * sc), wh) || Raycast::IsActorRef(wh.ref) || std::fabs(wh.normal.z) > 0.8f) {
+					return false;
+				}
+				a_dist = (wh.point - a_from).Length();
+				a_pt = wh.point;
+				return true;
+			};
+			float best = 1e9f;
+			V3    bestDir{}, bestPt{};
+			for (int k = 0; k < 16; ++k) {
+				const float ang = k * (2.0f * kPi / 16.0f);
+				const V3    dir{ std::sin(ang), std::cos(ang), 0.0f };
+				const V3    side{ dir.y, -dir.x, 0.0f };
+				float       dm, dl, dr;
+				V3          pm, pl, pr;
+				if (wallAt(eye, dir, dm, pm) && dm < best && wallAt(eye + side * (40.0f * sc), dir, dl, pl) && wallAt(eye - side * (40.0f * sc), dir, dr, pr) &&
+					std::fabs(dl - dm) < 60.0f * sc && std::fabs(dr - dm) < 60.0f * sc) {
+					best = dm;
+					bestDir = dir;
+					bestPt = pm;
+				}
+			}
+			++c.seeks;
+			if (best > 1e8f) {
+				if (cfg.log) {
+					logger::info("CLIMB {:08X} target {:.0f} above behind cover, {:.0f} sideways - no wide wall within 1500 to climb", c.id, td.z, tdh);
+				}
+				return false;
+			}
+			c.via = bestPt;
+			c.viaOn = true;
+			c.viaT = c.t;
+			if (cfg.log) {
+				logger::info("CLIMB {:08X} target {:.0f} above behind cover, {:.0f} sideways - heading for a wall {:.0f} away", c.id, td.z, tdh, best);
+			}
 			return true;
 		}
 
@@ -365,6 +433,12 @@ namespace SpiderClimb
 			if (c.pursue && tgt) {
 				c.goal = tgt->GetPosition() + V3{ 0, 0, 0.3f * (std::max)(tgt->GetHeight(), 40.0f) };
 			}
+			// v6: climbing down a wall - let go once near the floor. The floor point is in the corner at the foot of the
+			// wall, which it can't quite reach, so before it hung there motionless until the 40s timeout.
+			if (c.descending && ((c.goal - c.A).Length() < 50.0f * sc || c.A.z - c.goal.z < 40.0f * sc || c.t - c.descT > 6.0f)) {
+				End(c, a, "down");
+				return false;
+			}
 
 				// v3: pounce. On a wall or ceiling right next to its target, drop down onto it: the fight happens on the
 			// floor, where the spider can be hit (on a wall the game's collision capsule stays upright and doesn't
@@ -385,9 +459,13 @@ namespace SpiderClimb
 				End(c, a, c.pursue ? "arrived" : "done");
 				return false;
 			}
-			// v4: target overhead - walk to the chosen wall first; once on it (or next to it) steer for the target again
-			if (c.viaOn && (c.n.z < 0.75f || std::hypot(c.via.x - c.A.x, c.via.y - c.A.y) < 30.0f * sc)) {
+			// v4-v6: target overhead - walk into the chosen wall first; once on it steer for the target again.
+			// Re-checked while crawling on the floor (v6), not only at the start.
+			if (c.viaOn && (c.n.z < 0.75f || c.t - c.viaT > 8.0f)) {
 				c.viaOn = false;
+			}
+			if (c.pursue && tgt && !c.viaOn && c.t - c.seekT > 1.5f) {
+				SeekWall(c, r, tgt);
 			}
 			V3       m = DesiredDir(c.viaOn ? c.via - c.A : d, c.nT, c.fwd);
 			V3 corr{};
@@ -574,56 +652,9 @@ namespace SpiderClimb
 				c.A = c.Av = hit.point;
 			}
 			c.fwd = OnPlane(c.fwd, c.n, { 0, 1, 0 });
-			// v4/v5: target almost straight above (on a bridge, a ledge): there is no direction "toward" it on the floor,
-			// so the spider just walked back and forth underneath. Head for the nearest wall, pillar or bank instead
-			// (then up it, then over the edge toward the target).
-			if (a_target && c.n.z > 0.75f) {
-				const V3    td = a_target->GetPosition() - c.A;
-				const float tdh = std::hypot(td.x, td.y);
-				if (td.z > Config::Get().climb.minRise && tdh < 2.5f * Config::Get().climb.stopDist * c.scale) {
-					float best = 1e9f;
-					V3    bestDir{}, bestPt{};
-					// v5: only WIDE walls count (a river bank, a cliff, a building) - three parallel rays 80u apart must all
-					// hit a steep surface at about the same distance. Thin bridge posts are skipped: a post leads up to the
-					// underside of the deck, not onto it (Fr2596448yigong2: spider stayed in the river under the bridge).
-					const float sc = c.scale;
-					auto wallAt = [&](const V3& a_from, const V3& a_dir, float& a_dist, V3& a_pt) {
-						Raycast::Hit wh;
-						if (!r.CastSolid(a_from, a_from + a_dir * (1500.0f * sc), wh) || Raycast::IsActorRef(wh.ref) || std::fabs(wh.normal.z) > 0.6f) {
-							return false;
-						}
-						a_dist = (wh.point - a_from).Length();
-						a_pt = wh.point;
-						return true;
-					};
-					for (int k = 0; k < 16; ++k) {
-						const float ang = k * (2.0f * kPi / 16.0f);
-						const V3    dir{ std::sin(ang), std::cos(ang), 0.0f };
-						const V3    side{ dir.y, -dir.x, 0.0f };
-						const V3    from = c.A + V3{ 0, 0, 40.0f * sc };
-						float       dm, dl, dr;
-						V3          pm, pl, pr;
-						if (wallAt(from, dir, dm, pm) && wallAt(from + side * (40.0f * sc), dir, dl, pl) && wallAt(from - side * (40.0f * sc), dir, dr, pr) &&
-							std::fabs(dl - dm) < 60.0f * sc && std::fabs(dr - dm) < 60.0f * sc) {
-							if (dm < best) {
-								best = dm;
-								bestDir = dir;
-								bestPt = pm;
-							}
-						}
-					}
-					if (best < 1e8f) {
-						c.fwd = OnPlane(bestDir, c.n, c.fwd);
-						c.yaw = std::atan2(c.fwd.x, c.fwd.y);
-						c.via = bestPt;
-						c.viaOn = true;
-						if (Config::Get().climb.log) {
-							logger::info("CLIMB {:08X} target {:.0f} above, only {:.0f} away sideways - heading for the nearest wall {:.0f} away", c.id, td.z, tdh, best);
-						}
-					} else if (Config::Get().climb.log) {
-						logger::info("CLIMB {:08X} target {:.0f} above, only {:.0f} away sideways - no wide wall within 1500 to climb", c.id, td.z, tdh);
-					}
-				}
+			// v4-v6: target overhead behind something solid (on a bridge, a ledge): head for a wide wall first.
+			if (a_target) {
+				SeekWall(c, r, a_target);
 			}
 			if (Config::Get().climb.log) {
 				logger::info("CLIMB start {:08X} '{}' {} goal=({:.0f},{:.0f},{:.0f}) dist={:.0f}", c.id, c.name, a_pursue ? "pursue" : "goto", a_goal.x, a_goal.y, a_goal.z,
