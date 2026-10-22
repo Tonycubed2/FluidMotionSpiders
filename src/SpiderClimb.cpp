@@ -574,7 +574,7 @@ namespace SpiderClimb
 				c.A = c.Av = hit.point;
 			}
 			c.fwd = OnPlane(c.fwd, c.n, { 0, 1, 0 });
-			// v4: target almost straight above (on a bridge, a ledge): there is no direction "toward" it on the floor,
+			// v4/v5: target almost straight above (on a bridge, a ledge): there is no direction "toward" it on the floor,
 			// so the spider just walked back and forth underneath. Head for the nearest wall, pillar or bank instead
 			// (then up it, then over the edge toward the target).
 			if (a_target && c.n.z > 0.75f) {
@@ -583,17 +583,32 @@ namespace SpiderClimb
 				if (td.z > Config::Get().climb.minRise && tdh < 2.5f * Config::Get().climb.stopDist * c.scale) {
 					float best = 1e9f;
 					V3    bestDir{}, bestPt{};
-					for (int k = 0; k < 12; ++k) {
-						const float ang = k * (2.0f * kPi / 12.0f);
-						const V3    dir{ std::sin(ang), std::cos(ang), 0.0f };
-						const V3    from = c.A + V3{ 0, 0, 40.0f * c.scale };
+					// v5: only WIDE walls count (a river bank, a cliff, a building) - three parallel rays 80u apart must all
+					// hit a steep surface at about the same distance. Thin bridge posts are skipped: a post leads up to the
+					// underside of the deck, not onto it (Fr2596448yigong2: spider stayed in the river under the bridge).
+					const float sc = c.scale;
+					auto wallAt = [&](const V3& a_from, const V3& a_dir, float& a_dist, V3& a_pt) {
 						Raycast::Hit wh;
-						if (r.CastSolid(from, from + dir * (800.0f * c.scale), wh) && !Raycast::IsActorRef(wh.ref) && std::fabs(wh.normal.z) < 0.5f) {
-							const float dist = (wh.point - from).Length();
-							if (dist < best) {
-								best = dist;
+						if (!r.CastSolid(a_from, a_from + a_dir * (1500.0f * sc), wh) || Raycast::IsActorRef(wh.ref) || std::fabs(wh.normal.z) > 0.6f) {
+							return false;
+						}
+						a_dist = (wh.point - a_from).Length();
+						a_pt = wh.point;
+						return true;
+					};
+					for (int k = 0; k < 16; ++k) {
+						const float ang = k * (2.0f * kPi / 16.0f);
+						const V3    dir{ std::sin(ang), std::cos(ang), 0.0f };
+						const V3    side{ dir.y, -dir.x, 0.0f };
+						const V3    from = c.A + V3{ 0, 0, 40.0f * sc };
+						float       dm, dl, dr;
+						V3          pm, pl, pr;
+						if (wallAt(from, dir, dm, pm) && wallAt(from + side * (40.0f * sc), dir, dl, pl) && wallAt(from - side * (40.0f * sc), dir, dr, pr) &&
+							std::fabs(dl - dm) < 60.0f * sc && std::fabs(dr - dm) < 60.0f * sc) {
+							if (dm < best) {
+								best = dm;
 								bestDir = dir;
-								bestPt = wh.point;
+								bestPt = pm;
 							}
 						}
 					}
@@ -605,6 +620,8 @@ namespace SpiderClimb
 						if (Config::Get().climb.log) {
 							logger::info("CLIMB {:08X} target {:.0f} above, only {:.0f} away sideways - heading for the nearest wall {:.0f} away", c.id, td.z, tdh, best);
 						}
+					} else if (Config::Get().climb.log) {
+						logger::info("CLIMB {:08X} target {:.0f} above, only {:.0f} away sideways - no wide wall within 1500 to climb", c.id, td.z, tdh);
 					}
 				}
 			}
